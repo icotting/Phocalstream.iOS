@@ -18,7 +18,7 @@ class RequestManager: NSObject {
     var delegate: RequestManagerDelegate?
     
     func makeJsonCallWithEndpoint(endPoint: String) {
-        var request = NSMutableURLRequest(URL: NSURL(string: endPoint))
+        var request = NSMutableURLRequest(URL: NSURL(string: endPoint)!)
         request.HTTPMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         

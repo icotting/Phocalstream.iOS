@@ -26,9 +26,9 @@ class SiteListTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataS
         let details = (self.sites![indexPath.row] as NSDictionary).objectForKey("Details") as NSDictionary
         let name = details.objectForKey("SiteName") as String
         
-        let coverUrl = NSURL.URLWithString(NSString(format: "http://images.plattebasintimelapse.org/api/photo/low/%lu", details.objectForKey("CoverPhotoID")! as Int))
+        let coverUrl = NSURL(string: NSString(format: "http://images.plattebasintimelapse.org/api/photo/low/%lu", details.objectForKey("CoverPhotoID")! as Int))
         cell.coverImage.image = UIImage(
-            data: NSData.dataWithContentsOfURL(coverUrl, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil)
+            data: NSData(contentsOfURL: coverUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil)!
         )
         
         let formatter = NSNumberFormatter()
