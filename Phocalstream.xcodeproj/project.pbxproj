@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */; };
+		6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */; };
+		6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35D1B0ED716002CD319 /* CameraSite.swift */; };
+		6E3884551B0BC8AA001836DC /* SiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3884541B0BC8AA001836DC /* SiteViewController.swift */; };
 		6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E94EADA1B0BA43500A31460 /* RequestManager.swift */; };
 		6EF9D5461B0A421A00BC6FCA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9D5421B0A421A00BC6FCA /* FBSDKShareKit.framework */; };
 		6EF9D5471B0A421A00BC6FCA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9D5431B0A421A00BC6FCA /* FBSDKLoginKit.framework */; };
@@ -33,6 +36,9 @@
 
 /* Begin PBXFileReference section */
 		6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteContentViewController.swift; sourceTree = "<group>"; };
+		6E29B35D1B0ED716002CD319 /* CameraSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSite.swift; sourceTree = "<group>"; };
+		6E3884541B0BC8AA001836DC /* SiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteViewController.swift; sourceTree = "<group>"; };
 		6E94EADA1B0BA43500A31460 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		6EF9D5421B0A421A00BC6FCA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Phocalstream/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6EF9D5431B0A421A00BC6FCA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Phocalstream/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -99,12 +105,15 @@
 			children = (
 				6EFB863A1B0A3EAD0089A750 /* AppDelegate.swift */,
 				6EFB863C1B0A3EAD0089A750 /* ViewController.swift */,
+				6E3884541B0BC8AA001836DC /* SiteViewController.swift */,
+				6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */,
 				6EFB863E1B0A3EAD0089A750 /* Main.storyboard */,
 				6EFB86411B0A3EAD0089A750 /* Images.xcassets */,
 				6EFB86431B0A3EAD0089A750 /* LaunchScreen.xib */,
 				6EFB86381B0A3EAD0089A750 /* Supporting Files */,
 				6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */,
 				6E94EADA1B0BA43500A31460 /* RequestManager.swift */,
+				6E29B35D1B0ED716002CD319 /* CameraSite.swift */,
 			);
 			path = Phocalstream;
 			sourceTree = "<group>";
@@ -234,10 +243,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3884551B0BC8AA001836DC /* SiteViewController.swift in Sources */,
 				6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */,
 				6EFB863D1B0A3EAD0089A750 /* ViewController.swift in Sources */,
 				6EFB863B1B0A3EAD0089A750 /* AppDelegate.swift in Sources */,
 				6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */,
+				6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */,
+				6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

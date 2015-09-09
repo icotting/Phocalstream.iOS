@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,9 +17,110 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="cPp-lh-lg1" kind="presentation" identifier="LOADSITES" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Iee-3r-rhz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="780" y="435"/>
+        </scene>
+        <!--Site View Controller-->
+        <scene sceneID="9tm-Ts-1ad">
+            <objects>
+                <viewController id="cPp-lh-lg1" customClass="SiteViewController" customModule="Phocalstream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l8P-Y2-zU3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tym-CA-Bnm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gIN-RY-iB5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aet-s1-uCF">
+                                <rect key="frame" x="459" y="20" width="125" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="p5p-1i-tEY"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem image="camera" id="yxX-YP-1Tm">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem image="add" id="tZ1-j2-TBA">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem image="logoff" id="t6q-ZG-x7o">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="logoff" destination="cPp-lh-lg1" id="vrD-bo-wRV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Aet-s1-uCF" secondAttribute="trailing" constant="16" id="2Ya-Tr-wRN"/>
+                            <constraint firstItem="Aet-s1-uCF" firstAttribute="top" secondItem="gIN-RY-iB5" secondAttribute="top" constant="20" id="D4r-Ll-sNP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KdL-gl-6Ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1542" y="435"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="E2B-R3-c94">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="YAu-AC-rB4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgV-ow-Ai2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2281" y="243"/>
+        </scene>
+        <!--Site Content View Controller-->
+        <scene sceneID="gDF-At-6Da">
+            <objects>
+                <viewController storyboardIdentifier="SiteContentController" id="JyC-0t-D1R" customClass="SiteContentViewController" customModule="Phocalstream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xhq-cc-SY7"/>
+                        <viewControllerLayoutGuide type="bottom" id="BgE-av-Jmz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HFV-Fx-QeZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bma-iP-8Du">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEV-g2-8MS">
+                                <rect key="frame" x="16" y="432" width="536" height="100"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bma-iP-8Du" secondAttribute="trailing" id="HDs-ss-Oc8"/>
+                            <constraint firstItem="Bma-iP-8Du" firstAttribute="top" secondItem="HFV-Fx-QeZ" secondAttribute="top" id="JjJ-lX-n60"/>
+                            <constraint firstItem="Bma-iP-8Du" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leading" id="m2R-DC-rva"/>
+                            <constraint firstAttribute="bottom" secondItem="Bma-iP-8Du" secondAttribute="bottom" id="ynQ-0T-Sc0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="coverPhoto" destination="Bma-iP-8Du" id="qOr-0D-yZC"/>
+                        <outlet property="siteNameLabel" destination="nEV-g2-8MS" id="V4I-Wv-Pn7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtD-jU-CIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2281" y="979"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add" width="25" height="25"/>
+        <image name="camera" width="25" height="25"/>
+        <image name="logoff" width="25" height="25"/>
+    </resources>
 </document>

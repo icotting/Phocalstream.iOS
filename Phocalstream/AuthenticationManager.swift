@@ -17,6 +17,7 @@ enum FailureType {
     case UNAUTHORIZED
     case FORBIDDEN
     case ERROR
+    case PASSTHROUGH
 }
 
 class AuthenticationManager : RequestManagerDelegate {
