@@ -14,19 +14,26 @@ class SiteContentViewController: UIViewController {
 
     @IBOutlet weak var coverPhoto: UIImageView!
     @IBOutlet weak var siteNameLabel: UILabel!
+    @IBOutlet weak var siteDetailsLabel: UILabel!
 
     var coverPhotoID: Int64!
     var siteName: String!
+    var siteDetails: String!
+    
+    var pageIndex: Int!
     
     override func viewDidLoad() {
         self.siteNameLabel.text = self.siteName
+        self.siteDetailsLabel.text = self.siteDetails
         
-        var request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/low/%d", coverPhotoID))!)
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/high/%d", coverPhotoID))!)
         request.HTTPMethod = "GET"
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
-            self.coverPhoto.image = UIImage(data: data)
-            self.view.setNeedsDisplay()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.coverPhoto.image = UIImage(data: data!)
+                self.view.setNeedsDisplay()
+            })
         })
         
         task.resume()

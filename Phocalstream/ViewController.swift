@@ -61,7 +61,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
     // MARK: Authentication Delegate Methods
     func didAuthenticate()
     {
-        println("Logged in!")
+        print("Logged in!")
         self.performSegueWithIdentifier("LOADSITES", sender: self)
     }
     

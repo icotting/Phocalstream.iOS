@@ -22,7 +22,7 @@ class RequestManager: NSObject {
     }
     
     func makeJsonCallWithEndpoint(endPoint: String) {
-        var request = NSMutableURLRequest(URL: NSURL(string: endPoint)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: endPoint)!)
         request.HTTPMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -31,7 +31,15 @@ class RequestManager: NSObject {
             
             if (error == nil && statusCode >= 200 && statusCode < 300) {
                 var error: NSError?
-                let json:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
+                let json:AnyObject?
+                do {
+                    json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+                } catch let error1 as NSError {
+                    error = error1
+                    json = nil
+                } catch {
+                    fatalError()
+                }
                 self.delegate?.didSucceedWithBody(json as? Array)
             } else {
 
