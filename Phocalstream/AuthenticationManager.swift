@@ -36,7 +36,7 @@ class AuthenticationManager : RequestManagerDelegate {
     
     // MARK: RequestManager Delegate Methods
     
-    func didFailWithResponseCode(code: Int) {
+    func didFailWithResponseCode(code: Int, message: String?) {
         switch code {
         case 403:
             self.delegate?.didFailAuthentication(FailureType.UNAUTHORIZED, message:"Invalid Facebook access token")

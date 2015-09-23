@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Foundation
 
 protocol RequestManagerDelegate {
-    func didFailWithResponseCode(code: Int)
+    func didFailWithResponseCode(code: Int, message: String?)
     func didSucceedWithBody(body: Array<AnyObject>?)
 }
 
@@ -44,10 +45,79 @@ class RequestManager: NSObject {
             } else {
 
                 // todo: add the status code here
-                self.delegate?.didFailWithResponseCode(statusCode)
+                self.delegate?.didFailWithResponseCode(statusCode, message: nil)
             }
         })
         
+        task.resume()
+    }
+    
+    func postWithData(endpoint: String, data: NSDictionary) {
+        let request = NSMutableURLRequest(URL: NSURL(string: endpoint)!)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let postData: NSData
+        do {
+            // use jsonData
+            try postData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = postData
+        } catch let error1 as NSError{
+            print("json error: \(error1.localizedDescription)")
+        }
+        
+        print(NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding))
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            let statusCode = (response as! NSHTTPURLResponse).statusCode
+            
+            if (error == nil && statusCode >= 200 && statusCode < 300) {
+                self.delegate?.didSucceedWithBody([NSString(data: data!, encoding: NSUTF8StringEncoding)!])
+            } else {
+                self.delegate?.didFailWithResponseCode(statusCode, message: nil)
+            }
+        })
+        
+        task.resume()
+    }
+    
+    func uploadPhoto(endpoint: String, image: UIImage){
+        // Scale Image
+        let mediumImage = image.resizedImage(CGSizeMake(image.size.width / 2, image.size.height / 2), quality: CGInterpolationQuality.Medium)
+        let imageData = UIImagePNGRepresentation(mediumImage)
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: endpoint)!)
+        request.HTTPMethod = "POST"
+        
+        let boundary = NSString(format: "---------------------------14737809831466499882746641449")
+        let contentType = NSString(format: "multipart/form-data; boundary=%@",boundary)
+        request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
+        
+        let body = NSMutableData()
+        
+        // Title
+        body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData("Image Upload".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+        
+        let currentDateString = NSDate().toString("yyyy-MM-dd'T'HH:mm:ss.SSS")
+        
+        // Image
+        body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Disposition: form-data; name=\"photo_upload\"; filename=\"\(currentDateString)\"\\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(imageData!)
+        body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        request.HTTPBody = body
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            if(error == nil && (response as! NSHTTPURLResponse).statusCode == 200) {
+                self.delegate?.didSucceedWithBody(nil)
+            } else {
+                self.delegate?.didFailWithResponseCode((response as! NSHTTPURLResponse).statusCode, message: NSString(data: data!, encoding:NSUTF8StringEncoding) as! String)
+            }
+        })
         task.resume()
     }
     

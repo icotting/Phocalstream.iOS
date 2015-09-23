@@ -16,6 +16,7 @@ class SiteContentViewController: UIViewController {
     @IBOutlet weak var siteNameLabel: UILabel!
     @IBOutlet weak var siteDetailsLabel: UILabel!
 
+    var collectionID: Int64!
     var coverPhotoID: Int64!
     var siteName: String!
     var siteDetails: String!
@@ -26,7 +27,7 @@ class SiteContentViewController: UIViewController {
         self.siteNameLabel.text = self.siteName
         self.siteDetailsLabel.text = self.siteDetails
         
-        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/high/%d", coverPhotoID))!)
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", coverPhotoID))!)
         request.HTTPMethod = "GET"
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in

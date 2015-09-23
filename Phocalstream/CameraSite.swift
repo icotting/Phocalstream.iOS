@@ -10,13 +10,15 @@ import Foundation
 
 class CameraSite {
     
+    var collectionID: Int64?
     var coverPhotoID: Int64?
     var name: String?
     var photoCount: Int?
     var from: NSDate?
     var to: NSDate?
     
-    init(coverPhotoID: Int64, name: String, photoCount: Int, from: NSDate, to: NSDate) {
+    init(collectionID: Int64, coverPhotoID: Int64, name: String, photoCount: Int, from: NSDate, to: NSDate) {
+        self.collectionID = collectionID
         self.coverPhotoID = coverPhotoID
         self.name = name
         self.photoCount = photoCount
@@ -25,6 +27,7 @@ class CameraSite {
     }
     
     init(json: AnyObject) {
+        self.collectionID = (json.objectForKey("CollectionID") as? NSNumber)?.longLongValue
         self.coverPhotoID = (json.objectForKey("CoverPhotoID") as? NSNumber)?.longLongValue
         self.name = json.objectForKey("Name") as? String
         self.photoCount = json.objectForKey("PhotoCount") as? Int

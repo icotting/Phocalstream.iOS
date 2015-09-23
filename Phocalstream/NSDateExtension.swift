@@ -12,7 +12,13 @@ extension NSDate {
     
     convenience init(dateString: String) {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        if dateString.containsString(".") {
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        }
+        else {
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        }
+        
         let date = formatter.dateFromString(dateString)
         
         self.init(timeInterval: 0, sinceDate: date!)

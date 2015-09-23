@@ -14,9 +14,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
     
     override func viewDidAppear(animated: Bool) {

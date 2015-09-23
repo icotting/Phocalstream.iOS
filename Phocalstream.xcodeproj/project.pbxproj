@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3417C1DB1BB09559006B4220 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3417C1DA1BB09559006B4220 /* UIImageExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F331BAC66BD00089841 /* NSDateExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		34A94F361BAC990400089841 /* CreateSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F351BAC990400089841 /* CreateSiteController.swift */; settings = {ASSET_TAGS = (); }; };
+		34A94F381BAC9F9F00089841 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A94F371BAC9F9F00089841 /* CoreLocation.framework */; };
 		6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */; };
 		6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */; };
 		6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35D1B0ED716002CD319 /* CameraSite.swift */; };
@@ -36,7 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3417C1DA1BB09559006B4220 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		34A94F331BAC66BD00089841 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		34A94F351BAC990400089841 /* CreateSiteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSiteController.swift; sourceTree = "<group>"; };
+		34A94F371BAC9F9F00089841 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteContentViewController.swift; sourceTree = "<group>"; };
 		6E29B35D1B0ED716002CD319 /* CameraSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSite.swift; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A94F381BAC9F9F00089841 /* CoreLocation.framework in Frameworks */,
 				6EF9D5461B0A421A00BC6FCA /* FBSDKShareKit.framework in Frameworks */,
 				6EF9D5471B0A421A00BC6FCA /* FBSDKLoginKit.framework in Frameworks */,
 				6EF9D5481B0A421A00BC6FCA /* Bolts.framework in Frameworks */,
@@ -80,10 +87,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3439FA3B1BB1ABF6002AF0DC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */,
+				6E94EADA1B0BA43500A31460 /* RequestManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		3439FA3C1BB1AC0B002AF0DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E29B35D1B0ED716002CD319 /* CameraSite.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		34A94F321BAC66AA00089841 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				34A94F331BAC66BD00089841 /* NSDateExtension.swift */,
+				3417C1DA1BB09559006B4220 /* UIImageExtension.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -91,6 +116,7 @@
 		6EFB862C1B0A3EAD0089A750 = {
 			isa = PBXGroup;
 			children = (
+				34A94F371BAC9F9F00089841 /* CoreLocation.framework */,
 				6EF9D5421B0A421A00BC6FCA /* FBSDKShareKit.framework */,
 				6EF9D5431B0A421A00BC6FCA /* FBSDKLoginKit.framework */,
 				6EF9D5441B0A421A00BC6FCA /* Bolts.framework */,
@@ -113,18 +139,18 @@
 		6EFB86371B0A3EAD0089A750 /* Phocalstream */ = {
 			isa = PBXGroup;
 			children = (
+				3439FA3C1BB1AC0B002AF0DC /* Models */,
+				3439FA3B1BB1ABF6002AF0DC /* Managers */,
 				34A94F321BAC66AA00089841 /* Utilities */,
 				6EFB863A1B0A3EAD0089A750 /* AppDelegate.swift */,
 				6EFB863C1B0A3EAD0089A750 /* ViewController.swift */,
 				6E3884541B0BC8AA001836DC /* SiteViewController.swift */,
 				6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */,
+				34A94F351BAC990400089841 /* CreateSiteController.swift */,
 				6EFB863E1B0A3EAD0089A750 /* Main.storyboard */,
 				6EFB86411B0A3EAD0089A750 /* Images.xcassets */,
 				6EFB86431B0A3EAD0089A750 /* LaunchScreen.xib */,
 				6EFB86381B0A3EAD0089A750 /* Supporting Files */,
-				6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */,
-				6E94EADA1B0BA43500A31460 /* RequestManager.swift */,
-				6E29B35D1B0ED716002CD319 /* CameraSite.swift */,
 			);
 			path = Phocalstream;
 			sourceTree = "<group>";
@@ -200,7 +226,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "JS Raikes School";
 				TargetAttributes = {
 					6EFB86341B0A3EAD0089A750 = {
@@ -259,10 +285,12 @@
 				6E3884551B0BC8AA001836DC /* SiteViewController.swift in Sources */,
 				6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */,
 				6EFB863D1B0A3EAD0089A750 /* ViewController.swift in Sources */,
+				3417C1DB1BB09559006B4220 /* UIImageExtension.swift in Sources */,
 				6EFB863B1B0A3EAD0089A750 /* AppDelegate.swift in Sources */,
 				34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */,
 				6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */,
 				6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */,
+				34A94F361BAC990400089841 /* CreateSiteController.swift in Sources */,
 				6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +354,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -390,12 +419,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Phocalstream/Frameworks",
 				);
 				INFOPLIST_FILE = Phocalstream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.plattebasintimelapse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -404,12 +435,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Phocalstream/Frameworks",
 				);
 				INFOPLIST_FILE = Phocalstream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.plattebasintimelapse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -428,6 +461,7 @@
 				);
 				INFOPLIST_FILE = PhocalstreamTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.plattebasintimelapse.phocalstream.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Phocalstream.app/Phocalstream";
 			};
@@ -443,6 +477,7 @@
 				);
 				INFOPLIST_FILE = PhocalstreamTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.plattebasintimelapse.phocalstream.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Phocalstream.app/Phocalstream";
 			};
