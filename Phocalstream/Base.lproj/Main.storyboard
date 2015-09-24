@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,7 +21,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="cPp-lh-lg1" kind="presentation" identifier="LOADSITES" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Iee-3r-rhz"/>
+                        <segue destination="9F6-Z0-f0h" kind="presentation" identifier="LOADSITES" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Iee-3r-rhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -38,70 +39,40 @@
                     <view key="view" contentMode="scaleToFill" id="gIN-RY-iB5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aet-s1-uCF">
-                                <rect key="frame" x="20" y="20" width="560" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="p5p-1i-tEY"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VKx-Kd-Orj"/>
-                                    <barButtonItem image="camera" id="yxX-YP-1Tm">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="takePhoto:" destination="cPp-lh-lg1" id="YA4-an-fNf"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="add" id="tZ1-j2-TBA">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="oTa-bQ-Sfv" kind="show" identifier="createCameraSiteSegue" id="cbC-9S-Qqc"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="logoff" id="t6q-ZG-x7o">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="logoff:" destination="cPp-lh-lg1" id="aov-vu-79c"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="p5p-1i-tEY"/>
-                                    </mask>
-                                </variation>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Aet-s1-uCF" secondAttribute="trailing" constant="16" id="2Ya-Tr-wRN"/>
-                            <constraint firstItem="Aet-s1-uCF" firstAttribute="top" secondItem="gIN-RY-iB5" secondAttribute="top" constant="20" id="D4r-Ll-sNP"/>
-                            <constraint firstItem="Aet-s1-uCF" firstAttribute="top" secondItem="l8P-Y2-zU3" secondAttribute="bottom" id="DuQ-Wp-cyZ"/>
-                            <constraint firstItem="Aet-s1-uCF" firstAttribute="leading" secondItem="gIN-RY-iB5" secondAttribute="leadingMargin" id="aQe-gb-mi0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Aet-s1-uCF" secondAttribute="trailing" id="n4d-mm-cJ0"/>
-                            <constraint firstItem="Aet-s1-uCF" firstAttribute="leading" secondItem="gIN-RY-iB5" secondAttribute="leadingMargin" id="oCy-8o-ceS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Aet-s1-uCF" secondAttribute="trailing" id="udb-Cc-aZR"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2Ya-Tr-wRN"/>
-                                <exclude reference="D4r-Ll-sNP"/>
-                                <exclude reference="aQe-gb-mi0"/>
-                                <exclude reference="udb-Cc-aZR"/>
-                            </mask>
-                        </variation>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="OMU-ty-MRz">
+                        <rightBarButtonItems>
+                            <barButtonItem image="logoff" id="t6q-ZG-x7o">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="logoff:" destination="cPp-lh-lg1" id="aov-vu-79c"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="tZ1-j2-TBA">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="oTa-bQ-Sfv" kind="show" identifier="createCameraSiteSegue" id="cbC-9S-Qqc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="yxX-YP-1Tm">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="cPp-lh-lg1" id="YA4-an-fNf"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addSiteButton" destination="tZ1-j2-TBA" id="97d-br-7ZJ"/>
                         <outlet property="logoutButton" destination="t6q-ZG-x7o" id="ioQ-9Y-uQi"/>
                         <outlet property="takePhotoButton" destination="yxX-YP-1Tm" id="TEP-ZH-GUk"/>
-                        <outlet property="toolbar" destination="Aet-s1-uCF" id="eXa-II-idf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdL-gl-6Ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1542" y="435"/>
+            <point key="canvasLocation" x="2354" y="435"/>
         </scene>
         <!--Create Site Controller-->
         <scene sceneID="LjO-Dq-D5O">
@@ -204,7 +175,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="YAu-AC-rB4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgV-ow-Ai2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271" y="435"/>
+            <point key="canvasLocation" x="3083" y="435"/>
         </scene>
         <!--Site Content View Controller-->
         <scene sceneID="gDF-At-6Da">
@@ -219,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bma-iP-8Du">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEV-g2-8MS">
                                 <rect key="frame" x="28" y="448" width="544" height="78"/>
@@ -236,7 +207,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bma-iP-8Du" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leadingMargin" id="4dt-G3-3d7"/>
+                            <constraint firstItem="Bma-iP-8Du" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leadingMargin" constant="-20" id="4dt-G3-3d7"/>
                             <constraint firstItem="W1q-FF-PpX" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leadingMargin" constant="8" id="6If-VZ-FGS"/>
                             <constraint firstItem="nEV-g2-8MS" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leadingMargin" constant="8" id="6er-NI-AhO"/>
                             <constraint firstItem="Bma-iP-8Du" firstAttribute="leading" secondItem="HFV-Fx-QeZ" secondAttribute="leadingMargin" id="7uW-qL-eVv"/>
@@ -247,7 +218,7 @@
                             <constraint firstItem="Bma-iP-8Du" firstAttribute="centerY" secondItem="HFV-Fx-QeZ" secondAttribute="centerY" id="OhG-U1-XQh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nEV-g2-8MS" secondAttribute="trailing" constant="8" id="RG7-ML-K9v"/>
                             <constraint firstItem="Bma-iP-8Du" firstAttribute="top" secondItem="HFV-Fx-QeZ" secondAttribute="topMargin" id="S6M-cF-1fL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Bma-iP-8Du" secondAttribute="trailing" id="SMB-He-DzG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bma-iP-8Du" secondAttribute="trailing" constant="-20" id="SMB-He-DzG"/>
                             <constraint firstItem="BgE-av-Jmz" firstAttribute="top" secondItem="Bma-iP-8Du" secondAttribute="bottom" id="SeW-pk-4X9"/>
                             <constraint firstItem="BgE-av-Jmz" firstAttribute="top" secondItem="W1q-FF-PpX" secondAttribute="bottom" constant="48" id="Trp-Kn-Sro"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nEV-g2-8MS" secondAttribute="trailing" constant="8" id="Ukg-9M-CeP"/>
@@ -300,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtD-jU-CIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2947" y="435"/>
+            <point key="canvasLocation" x="3759" y="435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KmL-fa-Ftx">
@@ -320,10 +291,26 @@
             </objects>
             <point key="canvasLocation" x="1542" y="1174"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1aV-iw-Smg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9F6-Z0-f0h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NkQ-oC-sVX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cPp-lh-lg1" kind="relationship" relationship="rootViewController" id="kLQ-J3-7FI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEK-us-Hhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1542" y="435"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="add" width="25" height="25"/>
-        <image name="camera" width="25" height="25"/>
         <image name="logoff" width="25" height="25"/>
     </resources>
 </document>

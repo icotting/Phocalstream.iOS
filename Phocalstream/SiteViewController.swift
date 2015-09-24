@@ -12,13 +12,13 @@ import FBSDKLoginKit
 
 class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, RequestManagerDelegate {
 
-    @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var takePhotoButton: UIBarButtonItem!
     @IBOutlet weak var addSiteButton: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     weak var pageController: UIPageViewController!
     
+    var dialog: LoadingDialog!
     var mgr: RequestManager!
     var sites = [CameraSite]()
     var currentId: Int64!
@@ -26,10 +26,14 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.toolbar.clipsToBounds = true
-        
         self.mgr = RequestManager(delegate: self)
         mgr.makeJsonCallWithEndpoint("http://images.plattebasintimelapse.org/api/usercollection/usersites")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.takePhotoButton.tintColor = UIColor.blackColor()
+        self.addSiteButton.tintColor = UIColor.blackColor()
+        self.logoutButton.tintColor = UIColor.blackColor()
     }
     
     @IBAction func unwindFromAddSite(segue: UIStoryboardSegue) {
@@ -108,6 +112,9 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         dismissViewControllerAnimated(true, completion: nil)
         
+        self.dialog = LoadingDialog(title: "Uploading Photo")
+        self.dialog.presentFromView(self.view)
+        
         mgr.uploadPhoto("http://images.plattebasintimelapse.org/api/upload/upload?selectedCollectionID=\(self.currentId)", image: info[UIImagePickerControllerOriginalImage] as! UIImage)
     }
     
@@ -171,7 +178,9 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     // MARK: RequestManager Delegate Methods
     
     func didFailWithResponseCode(code: Int, message: String?) {
-        print(code)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.dialog.clearFromView()
+        })
     }
     
     func didSucceedWithBody(body: Array<AnyObject>?) {
@@ -193,6 +202,12 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                 self.view.addSubview(self.pageController!.view)
                 self.pageController.didMoveToParentViewController(self)
                 self.view.sendSubviewToBack(self.pageController.view)
+            })
+        }
+        // returning from photop upload, so dismiss dialog
+        else {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.dialog.clearFromView()
             })
         }
     }

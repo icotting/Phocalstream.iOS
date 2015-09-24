@@ -11,6 +11,9 @@
 		34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F331BAC66BD00089841 /* NSDateExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		34A94F361BAC990400089841 /* CreateSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F351BAC990400089841 /* CreateSiteController.swift */; settings = {ASSET_TAGS = (); }; };
 		34A94F381BAC9F9F00089841 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A94F371BAC9F9F00089841 /* CoreLocation.framework */; };
+		34C04DDF1BB43E7A00203B19 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C04DDE1BB43E7A00203B19 /* Dialog.swift */; settings = {ASSET_TAGS = (); }; };
+		34C04E251BB4566700203B19 /* LoadingDialogController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C04E241BB4566700203B19 /* LoadingDialogController.xib */; settings = {ASSET_TAGS = (); }; };
+		34C04E271BB4568A00203B19 /* LoadingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C04E261BB4568A00203B19 /* LoadingDialog.swift */; settings = {ASSET_TAGS = (); }; };
 		6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */; };
 		6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */; };
 		6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35D1B0ED716002CD319 /* CameraSite.swift */; };
@@ -43,6 +46,9 @@
 		34A94F331BAC66BD00089841 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		34A94F351BAC990400089841 /* CreateSiteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSiteController.swift; sourceTree = "<group>"; };
 		34A94F371BAC9F9F00089841 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		34C04DDE1BB43E7A00203B19 /* Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		34C04E241BB4566700203B19 /* LoadingDialogController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingDialogController.xib; path = ../../SwiftDialogs/SwiftDialogs/LoadingDialogController.xib; sourceTree = "<group>"; };
+		34C04E261BB4568A00203B19 /* LoadingDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingDialog.swift; sourceTree = "<group>"; };
 		6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteContentViewController.swift; sourceTree = "<group>"; };
 		6E29B35D1B0ED716002CD319 /* CameraSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSite.swift; sourceTree = "<group>"; };
@@ -109,8 +115,18 @@
 			children = (
 				34A94F331BAC66BD00089841 /* NSDateExtension.swift */,
 				3417C1DA1BB09559006B4220 /* UIImageExtension.swift */,
+				34C04DDE1BB43E7A00203B19 /* Dialog.swift */,
+				34C04E261BB4568A00203B19 /* LoadingDialog.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		34C04E231BB4563C00203B19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				34C04E241BB4566700203B19 /* LoadingDialogController.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		6EFB862C1B0A3EAD0089A750 = {
@@ -139,6 +155,7 @@
 		6EFB86371B0A3EAD0089A750 /* Phocalstream */ = {
 			isa = PBXGroup;
 			children = (
+				34C04E231BB4563C00203B19 /* Views */,
 				3439FA3C1BB1AC0B002AF0DC /* Models */,
 				3439FA3B1BB1ABF6002AF0DC /* Managers */,
 				34A94F321BAC66AA00089841 /* Utilities */,
@@ -264,6 +281,7 @@
 			files = (
 				6EFB86401B0A3EAD0089A750 /* Main.storyboard in Resources */,
 				6EFB86451B0A3EAD0089A750 /* LaunchScreen.xib in Resources */,
+				34C04E251BB4566700203B19 /* LoadingDialogController.xib in Resources */,
 				6EFB86421B0A3EAD0089A750 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,9 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C04DDF1BB43E7A00203B19 /* Dialog.swift in Sources */,
 				6E3884551B0BC8AA001836DC /* SiteViewController.swift in Sources */,
 				6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */,
 				6EFB863D1B0A3EAD0089A750 /* ViewController.swift in Sources */,
+				34C04E271BB4568A00203B19 /* LoadingDialog.swift in Sources */,
 				3417C1DB1BB09559006B4220 /* UIImageExtension.swift in Sources */,
 				6EFB863B1B0A3EAD0089A750 /* AppDelegate.swift in Sources */,
 				34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */,

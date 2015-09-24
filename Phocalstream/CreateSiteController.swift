@@ -16,7 +16,6 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
     @IBOutlet weak var createButton: UIBarButtonItem!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
-    
     @IBOutlet weak var siteNameField: UITextField!
     @IBOutlet weak var siteLocationField: UITextField!
     @IBOutlet weak var siteImageThumbnail: UIImageView!
@@ -30,6 +29,7 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
     
     var siteImage: UIImage!
     
+    var dialog: LoadingDialog!
     var geocoder: CLGeocoder!
     var manager: CLLocationManager!
     var mgr: RequestManager!
@@ -69,6 +69,9 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
     }
     
     @IBAction func create(sender: AnyObject) {
+        self.dialog = LoadingDialog(title: "Creating Site")
+        self.dialog.presentFromView(self.view)
+        
         //string siteName, double latitude, double longitude, string county, string state
         let dictionary = NSMutableDictionary()
         dictionary.setValue(self.siteName, forKeyPath: "SiteName")
@@ -154,19 +157,27 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
     // MARK: RequestManager Delegate Methods
     
     func didFailWithResponseCode(code: Int, message: String?) {
-        print("\(code): \(message!)")
+        dispatch_async(dispatch_get_main_queue(), {
+            print("\(code): \(message!)")
+            self.dialog.clearFromView()
+        })
     }
     
     func didSucceedWithBody(body: Array<AnyObject>?) {
-        print(body)
-        if let id = (body!.first as! String!) {
-            print("Site Id: \(id)")
+        // If the body is not nil, it is the first call to create the site
+        if body != nil {
+            let id = (body!.first as! String!)
             self.siteId = Int(id)
+            
+            self.dialog.updateTitle("Uploading Photo")
             
             self.mgr.uploadPhoto("http://images.plattebasintimelapse.org/api/upload/upload?selectedCollectionID=\(self.siteId)", image: self.siteImage!)
         }
+        // If it is nil, it is the result of the photo upload, so dismiss dialog and unwind
         else {
-            print("Image successfully uploaded to \(self.siteId)")
+            dispatch_async(dispatch_get_main_queue(), {
+                self.dialog.clearFromView()
+            })
             performSegueWithIdentifier("UNWINDANDRELOAD", sender: self)
         }
     }
