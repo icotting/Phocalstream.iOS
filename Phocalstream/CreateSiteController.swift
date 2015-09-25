@@ -81,8 +81,6 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
         dictionary.setValue(self.state, forKeyPath: "State")
         
         self.mgr.postWithData("http://images.plattebasintimelapse.org/api/usercollection/CreateUserCameraSite", data: dictionary)
-
-        print("create site")
     }
     
     // MARK: Photo Capture
@@ -191,8 +189,6 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
         
         self.geocoder.reverseGeocodeLocation(locations[0], completionHandler: {(placemarks, error) in
             if let placemark: CLPlacemark = placemarks?[0] {
-                print("\(placemark.subAdministrativeArea!), \(placemark.administrativeArea!)")
-                
                 self.county = placemark.subAdministrativeArea!
                 self.state = placemark.administrativeArea!
                 self.createButton.enabled = self.isSiteValid()

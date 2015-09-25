@@ -54,7 +54,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         siteContentController.siteName = sites[index].name!
         
         if sites[index].photoCount == 1 {
-        siteContentController.siteDetails = String(format: "Showing %d photo from %@", sites[index].photoCount!, (sites[index].from?.toString("MM/dd/YYYY")!)!)
+            siteContentController.siteDetails = String(format: "Showing %d photo from %@", sites[index].photoCount!, (sites[index].from?.toString("MM/dd/YYYY")!)!)
         }
         else {
             siteContentController.siteDetails = String(format: "Showing %d photos from %@ to %@", sites[index].photoCount!, (sites[index].from?.toString("MM/dd/YYYY")!)!, (sites[index].to?.toString("MM/dd/YYYY"))!)
@@ -146,7 +146,6 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         
         index = (viewController as! SiteContentViewController).pageIndex
         self.currentId = self.sites[index].collectionID
-        print("After: \(self.currentId)")
         
         if index == NSNotFound {
             return nil
@@ -165,8 +164,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         
         index = (viewController as! SiteContentViewController).pageIndex
         self.currentId = self.sites[index].collectionID
-        print("Before: \(self.currentId)")
-
+        
         if index == 0 || index == NSNotFound {
             return nil
         }
@@ -195,14 +193,13 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             self.currentId = self.sites[0].collectionID
             
             let siteContentController = self.viewControllerAtIndex(0)!
+            self.pageController.view.frame = CGRectMake(0, -44, self.view.frame.size.width, self.view.frame.size.height + 44)
             self.pageController.setViewControllers([siteContentController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             self.addChildViewController(self.pageController)
             
-            dispatch_async(dispatch_get_main_queue(), {
-                self.view.addSubview(self.pageController!.view)
-                self.pageController.didMoveToParentViewController(self)
-                self.view.sendSubviewToBack(self.pageController.view)
-            })
+            self.view.addSubview(self.pageController!.view)
+            self.pageController.didMoveToParentViewController(self)
+            self.view.sendSubviewToBack(self.pageController.view)
         }
         // returning from photop upload, so dismiss dialog
         else {

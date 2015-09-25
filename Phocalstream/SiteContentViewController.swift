@@ -24,6 +24,8 @@ class SiteContentViewController: UIViewController {
     var pageIndex: Int!
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.translucent = true
+        
         self.siteNameLabel.text = self.siteName
         self.siteDetailsLabel.text = self.siteDetails
         
@@ -38,5 +40,5 @@ class SiteContentViewController: UIViewController {
         })
         
         task.resume()
-    }
+    }    
 }
