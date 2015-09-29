@@ -45,6 +45,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
             let auth = AuthenticationManager(delegate: self)
             auth.login(FBSDKAccessToken.currentAccessToken().tokenString)
         }
+        
+        didFailAuthentication(FailureType.FORBIDDEN, message: "Failed")
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,23 +83,36 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
     
     func didFailAuthentication(type: FailureType, message: String)
     {
-        var view: UIAlertView? = nil
+        var alertView: UIAlertController? = nil
+        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
+            // simply cancel the alert
+        })
+        
         switch type {
         case .FORBIDDEN:
-            view = UIAlertView(title:"No Account", message:"You do not have a Phocalstream account. Visit the Phocalstream site to create one.", delegate:self, cancelButtonTitle:"OK")
-            view!.addButtonWithTitle("Visit Site")
+            alertView = UIAlertController(title: "No Account", message: "You do not have a Phocalstream account. Visit the Phocalstream site to create one.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertView?.addAction(cancelAction)
+            alertView?.addAction(UIAlertAction(title: "Visit Site", style: UIAlertActionStyle.Default, handler: { action -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "http://images.plattebasintimelapse.com/account/login")!)
+            }))
             break
         case .UNAUTHORIZED:
-            view = UIAlertView(title:"Authentication Failed", message:"Facebook failed to validate your login. Please try again.", delegate:self, cancelButtonTitle:"OK")
+            alertView = UIAlertController(title: "Authentication Failed", message: "Facebook failed to validate your login. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertView?.addAction(cancelAction)
             break
         case .PASSTHROUGH:
-            view = UIAlertView(title:"Authentication Failed", message:message, delegate:self, cancelButtonTitle:"OK")
+            alertView = UIAlertController(title: "Authentication Failed", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alertView?.addAction(cancelAction)
             break
         default:
-            view = UIAlertView(title:"Error", message:"An error occurred verifying your account with Phocalstream.", delegate:self, cancelButtonTitle:"OK")
+            alertView = UIAlertController(title: "Error", message: "An error occurred verifying your account with Phocalstream.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertView?.addAction(cancelAction)
         }
-        view!.show()
+        self.presentViewController(alertView!, animated: true, completion: nil)
     }
+    
+    // MARK: AlertView Delegate Methods
+    
     
 }
 
