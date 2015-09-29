@@ -12,8 +12,25 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate, AuthenticationDelegate {
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load Background Image
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", 235364))!)
+        request.HTTPMethod = "GET"
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.backgroundImage.image = UIImage(data: data!)
+                self.view.setNeedsDisplay()
+            })
+        })
+        
+        task.resume()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,5 +98,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
         }
         view!.show()
     }
+    
 }
 

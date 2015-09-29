@@ -193,13 +193,19 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             self.currentId = self.sites[0].collectionID
             
             let siteContentController = self.viewControllerAtIndex(0)!
-            self.pageController.view.frame = CGRectMake(0, -44, self.view.frame.size.width, self.view.frame.size.height + 44)
             self.pageController.setViewControllers([siteContentController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+
+            //            self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+            
             self.addChildViewController(self.pageController)
             
-            self.view.addSubview(self.pageController!.view)
-            self.pageController.didMoveToParentViewController(self)
-            self.view.sendSubviewToBack(self.pageController.view)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.view.addSubview(self.pageController!.view)
+                self.pageController.didMoveToParentViewController(self)
+                self.view.sendSubviewToBack(self.pageController.view)
+                
+//                self.pageController.view.frame.origin = CGPointMake(0, 0)
+            })
         }
         // returning from photop upload, so dismiss dialog
         else {

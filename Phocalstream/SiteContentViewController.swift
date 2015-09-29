@@ -32,8 +32,10 @@ class SiteContentViewController: UIViewController {
         let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", coverPhotoID))!)
         request.HTTPMethod = "GET"
         
+        print("Going for photo")
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             dispatch_async(dispatch_get_main_queue(), {
+                print("Got photo")
                 self.coverPhoto.image = UIImage(data: data!)
                 self.view.setNeedsDisplay()
             })
