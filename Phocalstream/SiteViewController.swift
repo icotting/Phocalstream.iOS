@@ -34,6 +34,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         self.takePhotoButton.tintColor = UIColor.blackColor()
         self.addSiteButton.tintColor = UIColor.blackColor()
         self.logoutButton.tintColor = UIColor.blackColor()
+
     }
     
     @IBAction func unwindFromAddSite(segue: UIStoryboardSegue) {
@@ -195,7 +196,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             let siteContentController = self.viewControllerAtIndex(0)!
             self.pageController.setViewControllers([siteContentController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
 
-            //            self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+//            self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
             
             self.addChildViewController(self.pageController)
             

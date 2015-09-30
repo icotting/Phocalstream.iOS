@@ -25,7 +25,7 @@ class SiteContentViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.translucent = true
-        
+                
         self.siteNameLabel.text = self.siteName
         self.siteDetailsLabel.text = self.siteDetails
         
