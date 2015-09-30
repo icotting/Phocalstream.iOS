@@ -45,8 +45,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, Authentication
             let auth = AuthenticationManager(delegate: self)
             auth.login(FBSDKAccessToken.currentAccessToken().tokenString)
         }
-        
-        didFailAuthentication(FailureType.FORBIDDEN, message: "Failed")
     }
 
     override func didReceiveMemoryWarning() {
