@@ -29,18 +29,29 @@ class SiteContentViewController: UIViewController {
         self.siteNameLabel.text = self.siteName
         self.siteDetailsLabel.text = self.siteDetails
         
-        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", coverPhotoID))!)
+        loadCoverPhoto()
+    }
+    
+    func loadCoverPhoto() {
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", self.coverPhotoID))!)
         request.HTTPMethod = "GET"
         
-        print("Going for photo")
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             dispatch_async(dispatch_get_main_queue(), {
-                print("Got photo")
+                self.coverPhoto.alpha = 0
+                
                 self.coverPhoto.image = UIImage(data: data!)
                 self.view.setNeedsDisplay()
+                
+                UIView.beginAnimations("", context: nil)
+                UIView.setAnimationDuration(0.5)
+                UIView.setAnimationDelegate(self)
+                
+                self.coverPhoto.alpha = 1
+                UIView.commitAnimations()
             })
         })
         
         task.resume()
-    }    
+    }
 }

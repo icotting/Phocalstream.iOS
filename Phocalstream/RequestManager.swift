@@ -12,6 +12,7 @@ import Foundation
 protocol RequestManagerDelegate {
     func didFailWithResponseCode(code: Int, message: String?)
     func didSucceedWithBody(body: Array<AnyObject>?)
+    func didSucceedWithObjectId(id: Int64)
 }
 
 class RequestManager: NSObject {
@@ -38,6 +39,7 @@ class RequestManager: NSObject {
                 } catch let error1 as NSError {
                     error = error1
                     json = nil
+                    print("Error parsing JSON result: \(error)")
                 } catch {
                     fatalError()
                 }
@@ -65,8 +67,6 @@ class RequestManager: NSObject {
         } catch let error1 as NSError{
             print("json error: \(error1.localizedDescription)")
         }
-        
-        print(NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding))
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             let statusCode = (response as! NSHTTPURLResponse).statusCode
@@ -113,9 +113,20 @@ class RequestManager: NSObject {
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             if(error == nil && (response as! NSHTTPURLResponse).statusCode == 200) {
-                self.delegate?.didSucceedWithBody(nil)
+                var error: NSError?
+                let json:AnyObject?
+                do {
+                    json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+                } catch let error1 as NSError {
+                    error = error1
+                    json = nil
+                    print("Error parsing JSON result: \(error)")
+                } catch {
+                    fatalError()
+                }
+                self.delegate?.didSucceedWithObjectId((json!.valueForKey("id") as! NSNumber).longLongValue)
             } else {
-                self.delegate?.didFailWithResponseCode((response as! NSHTTPURLResponse).statusCode, message: NSString(data: data!, encoding:NSUTF8StringEncoding) as! String)
+                self.delegate?.didFailWithResponseCode((response as! NSHTTPURLResponse).statusCode, message: String(NSString(data: data!, encoding:NSUTF8StringEncoding)))
             }
         })
         task.resume()

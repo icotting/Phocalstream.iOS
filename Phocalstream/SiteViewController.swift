@@ -21,7 +21,11 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     var dialog: LoadingDialog!
     var mgr: RequestManager!
     var sites = [CameraSite]()
+    
     var currentId: Int64!
+    var currentIndex: Int!
+    var uploadIndex: Int!
+    var recentImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +47,6 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     
     @IBAction func unwindAndReloadSites(segue: UIStoryboardSegue) {
         self.sites = [CameraSite]()
-        self.currentId = nil
         self.mgr.makeJsonCallWithEndpoint("http://images.plattebasintimelapse.org/api/usercollection/usersites")
     }
     
@@ -116,6 +119,8 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         self.dialog = LoadingDialog(title: "Uploading Photo")
         self.dialog.presentFromView(self.view)
         
+        self.uploadIndex = self.currentIndex
+        self.recentImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         mgr.uploadPhoto("http://images.plattebasintimelapse.org/api/upload/upload?selectedCollectionID=\(self.currentId)", image: info[UIImagePickerControllerOriginalImage] as! UIImage)
     }
     
@@ -146,6 +151,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         var index = NSNotFound
         
         index = (viewController as! SiteContentViewController).pageIndex
+        self.currentIndex = index
         self.currentId = self.sites[index].collectionID
         
         if index == NSNotFound {
@@ -164,6 +170,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         var index = NSNotFound
         
         index = (viewController as! SiteContentViewController).pageIndex
+        self.currentIndex = index
         self.currentId = self.sites[index].collectionID
         
         if index == 0 || index == NSNotFound {
@@ -191,28 +198,33 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                 self.sites.append(CameraSite(json: item))
             }
             
+            self.currentIndex = 0
             self.currentId = self.sites[0].collectionID
             
             let siteContentController = self.viewControllerAtIndex(0)!
             self.pageController.setViewControllers([siteContentController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
 
-//            self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-            
             self.addChildViewController(self.pageController)
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.view.addSubview(self.pageController!.view)
                 self.pageController.didMoveToParentViewController(self)
                 self.view.sendSubviewToBack(self.pageController.view)
-                
-//                self.pageController.view.frame.origin = CGPointMake(0, 0)
             })
         }
-        // returning from photop upload, so dismiss dialog
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.dialog.clearFromView()
-            })
-        }
+    }
+    
+    func didSucceedWithObjectId(id: Int64) {
+        
+        sites[uploadIndex].coverPhotoID = id
+        sites[uploadIndex].photoCount! += 1
+        
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.dialog.clearFromView()
+            let siteContentController = self.viewControllerAtIndex(self.uploadIndex)!
+            self.pageController.setViewControllers([siteContentController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+
+        })
     }
 }

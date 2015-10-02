@@ -171,13 +171,13 @@ class CreateSiteController : UIViewController, CLLocationManagerDelegate, UIText
             
             self.mgr.uploadPhoto("http://images.plattebasintimelapse.org/api/upload/upload?selectedCollectionID=\(self.siteId)", image: self.siteImage!)
         }
-        // If it is nil, it is the result of the photo upload, so dismiss dialog and unwind
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.dialog.clearFromView()
-            })
-            performSegueWithIdentifier("UNWINDANDRELOAD", sender: self)
-        }
+    }
+    
+    func didSucceedWithObjectId(id: Int64) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.dialog.clearFromView()
+        })
+        performSegueWithIdentifier("UNWINDANDRELOAD", sender: self)
     }
     
     

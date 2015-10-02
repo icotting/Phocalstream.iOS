@@ -54,4 +54,8 @@ class AuthenticationManager : RequestManagerDelegate {
         self.delegate?.didAuthenticate()
     }
     
+    func didSucceedWithObjectId(id: Int64) {
+        print("didSucceedWithObjectId not implemented in AuthenticationManager")
+    }
+    
 }
