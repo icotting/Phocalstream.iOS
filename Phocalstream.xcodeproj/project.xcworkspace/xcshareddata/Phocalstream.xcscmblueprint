@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "460100067BBE27A095C7CCBBF4241612289934ED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "460100067BBE27A095C7CCBBF4241612289934ED" : 0,
+    "6B0F7A764883BE577F7DD9B11F574A0E5B302D1F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "01174463-7A8E-4046-83FA-0CB2CCDEA10B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "460100067BBE27A095C7CCBBF4241612289934ED" : "Phocalstream.iOS\/",
+    "6B0F7A764883BE577F7DD9B11F574A0E5B302D1F" : "SwiftDialogs\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Phocalstream",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Phocalstream.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/icotting\/Phocalstream.iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "460100067BBE27A095C7CCBBF4241612289934ED"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zmchristensen\/SwiftDialogs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6B0F7A764883BE577F7DD9B11F574A0E5B302D1F"
+    }
+  ]
+}
