@@ -13,10 +13,25 @@ import FBSDKLoginKit
 class ViewController: UIViewController, FBSDKLoginButtonDelegate, AuthenticationDelegate {
     
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var browseSitesButton: UIButton!
+    @IBOutlet weak var gradientView: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.gradientView.bounds
+        let clearColor = UIColor.clearColor().CGColor as CGColorRef
+        let darkColor = UIColor.blackColor().CGColor as CGColorRef
+        gradientLayer.colors = [clearColor, darkColor]
+        gradientLayer.locations = [0.0, 0.70]
+        self.gradientView.layer.addSublayer(gradientLayer)
+        
+        // color button - #009688
+        browseSitesButton.backgroundColor = UIColor(red: 106.0/255.0, green: 170.0/255.0, blue: 195.0/255.0, alpha: 1.0)
+        browseSitesButton.layer.cornerRadius = 4
+        browseSitesButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5)
         
         // Load Background Image
         let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", 235364))!)
