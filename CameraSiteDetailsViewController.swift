@@ -72,8 +72,6 @@ class CameraSiteDetailsViewController : UIViewController {
         browseOnlineButton.layer.cornerRadius = 4
         browseOnlineButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5)
         browseOnlineButton.setTitle(String(format: "Browse %@ Online", (self.site?.details.siteName)!), forState: UIControlState.Normal)
-//        browseOnlineButton.titleLabel?.text = "New Text"
-            //
     }
     
     @IBAction func browseOnline(sender: AnyObject) {

@@ -18,10 +18,9 @@ class CameraSiteCell : UITableViewCell {
     @IBOutlet weak var siteDetailsLabel: UILabel!
 
     func loadItem(site: PhocalstreamSite) {
-        // name
         siteNameLabel.text = site.details.siteName
         
-        // photos
+        
         let numberFormatter = NSNumberFormatter()
         numberFormatter.locale = NSLocale.currentLocale()
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle;
@@ -34,12 +33,11 @@ class CameraSiteCell : UITableViewCell {
             photoCountLabel.text = String(format: "%@ photos", numberFormatter.stringFromNumber(site.details.photoCount)!)
         }
         self.photoCountBackground.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.5)
-//        self.photoCountLabel.draw
 
-        // details
+
         siteDetailsLabel.text = String(format: "From %@ to %@", (site.details.first.toString("MM/dd/YYYY")!), (site.details.last.toString("MM/dd/YYYY"))!)
 
-        // Load Background Image
+        
         let request = NSMutableURLRequest(URL: NSURL(string: String(format: "http://images.plattebasintimelapse.org/api/photo/medium/%d", site.details.coverPhotoId))!)
         request.HTTPMethod = "GET"
         
@@ -49,7 +47,6 @@ class CameraSiteCell : UITableViewCell {
                 self.backgroundImage.setNeedsDisplay()
             })
         })
-        
         task.resume()
     }
 

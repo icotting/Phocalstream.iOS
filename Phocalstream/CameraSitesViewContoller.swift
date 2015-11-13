@@ -28,9 +28,6 @@ class CameraSitesViewContoller : UITableViewController, RequestManagerDelegate {
         self.mgr = RequestManager(delegate: self)
         mgr.makeJsonCallWithEndpoint("http://images.plattebasintimelapse.com/api/sitecollection/list")
 
-        
-        //sites = [CameraSite(collectionID: 1, coverPhotoID: 100, name: "Test Site", photoCount: 100, from: NSDate(), to: NSDate()),
-                 //CameraSite(collectionID: 2, coverPhotoID: 78420, name: "New Test Site", photoCount: 2000, from: NSDate(), to: NSDate())]
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
