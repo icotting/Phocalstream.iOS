@@ -17,7 +17,7 @@ class CameraSiteCell : UITableViewCell {
     @IBOutlet weak var photoCountLabel: UILabel!
     @IBOutlet weak var siteDetailsLabel: UILabel!
 
-    func loadItem(site: PhocalstreamSite) {
+    func loadItem(site: CameraSite) {
         siteNameLabel.text = site.details.siteName
         
         

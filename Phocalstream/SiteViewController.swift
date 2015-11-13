@@ -20,7 +20,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     
     var dialog: LoadingDialog!
     var mgr: RequestManager!
-    var sites = [CameraSite]()
+    var sites = [UserSite]()
     
     var currentId: Int64!
     var currentIndex: Int!
@@ -46,7 +46,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     }
     
     @IBAction func unwindAndReloadSites(segue: UIStoryboardSegue) {
-        self.sites = [CameraSite]()
+        self.sites = [UserSite]()
         self.mgr.makeJsonCallWithEndpoint("http://images.plattebasintimelapse.org/api/usercollection/usersites")
     }
     
@@ -54,14 +54,14 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         let siteContentController = self.storyboard?.instantiateViewControllerWithIdentifier("SiteContentController") as! SiteContentViewController
         
         siteContentController.collectionID = sites[index].collectionID
-        siteContentController.coverPhotoID = sites[index].coverPhotoID!
-        siteContentController.siteName = sites[index].name!
+        siteContentController.coverPhotoID = sites[index].coverPhotoID
+        siteContentController.siteName = sites[index].name
         
         if sites[index].photoCount == 1 {
-            siteContentController.siteDetails = String(format: "Showing %d photo from %@", sites[index].photoCount!, (sites[index].from?.toString("MM/dd/YYYY")!)!)
+            siteContentController.siteDetails = String(format: "Showing %d photo from %@", sites[index].photoCount, sites[index].from.toString("MM/dd/YYYY")!)
         }
         else {
-            siteContentController.siteDetails = String(format: "Showing %d photos from %@ to %@", sites[index].photoCount!, (sites[index].from?.toString("MM/dd/YYYY")!)!, (sites[index].to?.toString("MM/dd/YYYY"))!)
+            siteContentController.siteDetails = String(format: "Showing %d photos from %@ to %@", sites[index].photoCount, sites[index].from.toString("MM/dd/YYYY")!, sites[index].to.toString("MM/dd/YYYY")!)
         }
         siteContentController.pageIndex = index
         return siteContentController
@@ -195,7 +195,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             self.pageController.dataSource = self;
             
             for item in body! {
-                self.sites.append(CameraSite(json: item))
+                self.sites.append(UserSite(json: item))
             }
             
             self.currentIndex = 0
@@ -217,7 +217,7 @@ class SiteViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     func didSucceedWithObjectId(id: Int64) {
         
         sites[uploadIndex].coverPhotoID = id
-        sites[uploadIndex].photoCount! += 1
+        sites[uploadIndex].photoCount += 1
         
         
         dispatch_async(dispatch_get_main_queue(), {

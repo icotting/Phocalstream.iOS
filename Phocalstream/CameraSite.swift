@@ -1,37 +1,59 @@
 //
-//  CameraSite.swift
+//  PhocalstreamSite.swift
 //  Phocalstream
 //
-//  Created by Ian Cottingham on 5/21/15.
-//  Copyright (c) 2015 JS Raikes School. All rights reserved.
+//  Created by Zach Christensen on 11/12/15.
+//  Copyright © 2015 JS Raikes School. All rights reserved.
 //
 
 import Foundation
 
 class CameraSite {
-    
-    var collectionID: Int64?
-    var coverPhotoID: Int64?
-    var name: String?
-    var photoCount: Int?
-    var from: NSDate?
-    var to: NSDate?
-    
-    init(collectionID: Int64, coverPhotoID: Int64, name: String, photoCount: Int, from: NSDate, to: NSDate) {
-        self.collectionID = collectionID
-        self.coverPhotoID = coverPhotoID
-        self.name = name
-        self.photoCount = photoCount
-        self.from = from
-        self.to = to
+
+    var details: Details
+    var latitude: Double
+    var longitude: Double
+
+    init(details: Details, latitude: Double, longitude: Double) {
+        self.details = details
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     init(json: AnyObject) {
-        self.collectionID = (json.objectForKey("CollectionID") as? NSNumber)?.longLongValue
-        self.coverPhotoID = (json.objectForKey("CoverPhotoID") as? NSNumber)?.longLongValue
-        self.name = json.objectForKey("Name") as? String
-        self.photoCount = json.objectForKey("PhotoCount") as? Int
-        self.from = NSDate(dateString: (json.objectForKey("From") as? String)!)
-        self.to = NSDate(dateString: (json.objectForKey("To") as? String)!)
+        self.details = Details(json: json.objectForKey("Details")!)
+        self.latitude = json.objectForKey("Latitude") as! Double
+        self.longitude = json.objectForKey("Longitude") as! Double
+    }
+
+}
+
+class Details {
+
+    var siteName: String
+    var first: NSDate
+    var last: NSDate
+    var photoCount: Int
+    var siteId: Int64
+    var coverPhotoId: Int64
+    
+    init(siteName: String, first: String, last: String, photoCount: Int, siteId: Int64, coverPhotoId: Int64) {
+        self.siteName = siteName
+        self.first = NSDate(dateString: first)
+        self.last = NSDate(dateString: last)
+        self.photoCount = photoCount
+        self.siteId = siteId
+        self.coverPhotoId = coverPhotoId
+    }
+    
+    init(json: AnyObject) {
+        self.siteName = json.objectForKey("SiteName") as! String
+        self.first = NSDate(dateString: json.objectForKey("First") as! String)
+        self.last = NSDate(dateString: json.objectForKey("Last") as! String)
+        self.photoCount = json.objectForKey("PhotoCount") as! Int
+        self.siteId = (json.objectForKey("SiteID") as! NSNumber).longLongValue
+        self.coverPhotoId = (json.objectForKey("CoverPhotoID") as! NSNumber).longLongValue
     }
 }
+
+
