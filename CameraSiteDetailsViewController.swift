@@ -18,7 +18,7 @@ class CameraSiteDetailsViewController : UIViewController {
     @IBOutlet weak var detailsLabel: UILabel!
     
     @IBOutlet weak var browseOnlineButton: UIButton!
-    var site: PhocalstreamSite?
+    var site: CameraSite?
     
     
     
@@ -79,7 +79,7 @@ class CameraSiteDetailsViewController : UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: url)!)
     }
     
-    func setSite(site: PhocalstreamSite) {
+    func setSite(site: CameraSite) {
         self.site = site
     }
 }

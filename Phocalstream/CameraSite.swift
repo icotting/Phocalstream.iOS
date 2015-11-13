@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PhocalstreamSite {
+class CameraSite {
 
     var details: Details
     var latitude: Double

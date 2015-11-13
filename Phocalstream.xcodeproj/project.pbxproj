@@ -13,7 +13,7 @@
 		346B31561BF3E7F800B184B1 /* CameraSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B31551BF3E7F800B184B1 /* CameraSiteCell.swift */; };
 		346B31581BF3EAE500B184B1 /* CameraSitesViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B31571BF3EAE500B184B1 /* CameraSitesViewContoller.swift */; };
 		346B315E1BF51B3A00B184B1 /* CameraSiteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B315D1BF51B3A00B184B1 /* CameraSiteDetailsViewController.swift */; };
-		346B31601BF5444500B184B1 /* PhocalstreamSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B315F1BF5444500B184B1 /* PhocalstreamSite.swift */; };
+		346B31601BF5444500B184B1 /* CameraSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B315F1BF5444500B184B1 /* CameraSite.swift */; };
 		34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F331BAC66BD00089841 /* NSDateExtension.swift */; };
 		34A94F361BAC990400089841 /* CreateSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A94F351BAC990400089841 /* CreateSiteController.swift */; };
 		34A94F381BAC9F9F00089841 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A94F371BAC9F9F00089841 /* CoreLocation.framework */; };
@@ -53,7 +53,7 @@
 		346B31551BF3E7F800B184B1 /* CameraSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSiteCell.swift; sourceTree = "<group>"; };
 		346B31571BF3EAE500B184B1 /* CameraSitesViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSitesViewContoller.swift; sourceTree = "<group>"; };
 		346B315D1BF51B3A00B184B1 /* CameraSiteDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraSiteDetailsViewController.swift; path = ../CameraSiteDetailsViewController.swift; sourceTree = "<group>"; };
-		346B315F1BF5444500B184B1 /* PhocalstreamSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhocalstreamSite.swift; sourceTree = "<group>"; };
+		346B315F1BF5444500B184B1 /* CameraSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSite.swift; sourceTree = "<group>"; };
 		34A94F331BAC66BD00089841 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		34A94F351BAC990400089841 /* CreateSiteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSiteController.swift; sourceTree = "<group>"; };
 		34A94F371BAC9F9F00089841 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6E29B35D1B0ED716002CD319 /* UserSite.swift */,
-				346B315F1BF5444500B184B1 /* PhocalstreamSite.swift */,
+				346B315F1BF5444500B184B1 /* CameraSite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				3417C1DB1BB09559006B4220 /* UIImageExtension.swift in Sources */,
 				6EFB863B1B0A3EAD0089A750 /* AppDelegate.swift in Sources */,
 				34A94F341BAC66BD00089841 /* NSDateExtension.swift in Sources */,
-				346B31601BF5444500B184B1 /* PhocalstreamSite.swift in Sources */,
+				346B31601BF5444500B184B1 /* CameraSite.swift in Sources */,
 				346B31561BF3E7F800B184B1 /* CameraSiteCell.swift in Sources */,
 				6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */,
 				6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */,

@@ -13,7 +13,7 @@ class CameraSitesViewContoller : UITableViewController, RequestManagerDelegate {
 
     var mgr: RequestManager!
     var dialog: LoadingDialog!
-    var sites = [PhocalstreamSite]()
+    var sites = [CameraSite]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class CameraSitesViewContoller : UITableViewController, RequestManagerDelegate {
     
     func didSucceedWithBody(body: Array<AnyObject>?) {
         for item in body! {
-            self.sites.append(PhocalstreamSite(json: item))
+            self.sites.append(CameraSite(json: item))
         }
     
         dispatch_async(dispatch_get_main_queue(), {
