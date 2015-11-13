@@ -21,7 +21,7 @@
 		34C04E271BB4568A00203B19 /* LoadingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C04E261BB4568A00203B19 /* LoadingDialog.swift */; };
 		6E25AB381B0B791F0031CA84 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */; };
 		6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */; };
-		6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35D1B0ED716002CD319 /* CameraSite.swift */; };
+		6E29B35E1B0ED716002CD319 /* UserSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29B35D1B0ED716002CD319 /* UserSite.swift */; };
 		6E3884551B0BC8AA001836DC /* SiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3884541B0BC8AA001836DC /* SiteViewController.swift */; };
 		6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E94EADA1B0BA43500A31460 /* RequestManager.swift */; };
 		6EF9D5461B0A421A00BC6FCA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9D5421B0A421A00BC6FCA /* FBSDKShareKit.framework */; };
@@ -61,7 +61,7 @@
 		34C04E261BB4568A00203B19 /* LoadingDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingDialog.swift; sourceTree = "<group>"; };
 		6E25AB371B0B791F0031CA84 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		6E29B35B1B0ED2B1002CD319 /* SiteContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteContentViewController.swift; sourceTree = "<group>"; };
-		6E29B35D1B0ED716002CD319 /* CameraSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSite.swift; sourceTree = "<group>"; };
+		6E29B35D1B0ED716002CD319 /* UserSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSite.swift; sourceTree = "<group>"; };
 		6E3884541B0BC8AA001836DC /* SiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteViewController.swift; sourceTree = "<group>"; };
 		6E94EADA1B0BA43500A31460 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		6EF9D5421B0A421A00BC6FCA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Phocalstream/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		3439FA3C1BB1AC0B002AF0DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6E29B35D1B0ED716002CD319 /* CameraSite.swift */,
+				6E29B35D1B0ED716002CD319 /* UserSite.swift */,
 				346B315F1BF5444500B184B1 /* PhocalstreamSite.swift */,
 			);
 			name = Models;
@@ -330,7 +330,7 @@
 				6E94EADB1B0BA43500A31460 /* RequestManager.swift in Sources */,
 				6E29B35C1B0ED2B1002CD319 /* SiteContentViewController.swift in Sources */,
 				34A94F361BAC990400089841 /* CreateSiteController.swift in Sources */,
-				6E29B35E1B0ED716002CD319 /* CameraSite.swift in Sources */,
+				6E29B35E1B0ED716002CD319 /* UserSite.swift in Sources */,
 				346B315E1BF51B3A00B184B1 /* CameraSiteDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
